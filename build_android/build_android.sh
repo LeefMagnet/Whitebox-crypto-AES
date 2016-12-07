@@ -12,7 +12,9 @@
 -DCMAKE_TOOLCHAIN_FILE=/home/cppko/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake \
 -DANDROID_NATIVE_API_LEVEL=19 \
 -DANDROID_TOOLCHAIN=clang \
--DANDROID_STL=c++_static
+-DANDROID_STL=c++_static \
+-DCMAKE_CXX_FLAGS=-O2 \
+-DCMAKE_C_FLAGS=-O2
 # cmake .
 # cmake -DNTL_NO_DEFAULT_PATH=ON .
 # echo "Running build"
