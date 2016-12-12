@@ -234,9 +234,10 @@ inline void dumpW32b(W32b& a){
 }
 
 // Reads character vector to W128b, by columns - required format for encryption input
-void arr_to_W128b(unsigned char * src, size_t offset, W128b& dst);
-void arr_to_W128b(char * src, size_t offset, W128b& dst);
-void W128b_to_arr(char * dst, size_t offset, W128b& src);
+void arr_to_W128b(const unsigned char * src, size_t offset, W128b& dst);
+void arr_to_W128b(const char * src, size_t offset, W128b& dst);
+void W128b_to_arr(char * dst, size_t offset, const W128b& src);
+void W128b_to_str(std::string& dst, size_t offset, const W128b& src);
 bool compare_W128b(const W128b& src, const W128b& dst);
 
 class WBAES {

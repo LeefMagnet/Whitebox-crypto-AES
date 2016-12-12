@@ -36,25 +36,32 @@ const int WBAES::shiftRowsInv[N_BYTES] = {
 		13, 14, 15, 12
 };
 
-void arr_to_W128b(unsigned char * src, size_t offset, W128b& dst){
+void arr_to_W128b(const unsigned char * src, size_t offset, W128b& dst){
 	int i=0;
 	for(i=0; i<16; i++){
 		dst.B[idxTranspose(i)] = src[offset+i];
 	}
 }
 
-void arr_to_W128b(char * src, size_t offset, W128b& dst){
+void arr_to_W128b(const char * src, size_t offset, W128b& dst){
 	int i=0;
 	for(i=0; i<16; i++){
 		dst.B[idxTranspose(i)] = src[offset+i];
 	}
 }
 
-void W128b_to_arr(char * dst, size_t offset, W128b& src){
+void W128b_to_arr(char * dst, size_t offset, const W128b& src){
 	int i=0;
 	for(i=0; i<16; i++){
 		dst[offset+i] = src.B[idxTranspose(i)];
 	}
+}
+
+void W128b_to_str(std::string& dst, size_t offset, const W128b& src){
+  if(dst.length() < offset + 16) return;
+  for(int i=0; i < 16; i++){
+    dst[offset+i] = src.B[idxTranspose(i)];
+  }
 }
 
 bool compare_W128b(const W128b& src, const W128b& dst){
